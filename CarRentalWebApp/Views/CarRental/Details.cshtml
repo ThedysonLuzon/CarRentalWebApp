@@ -1,0 +1,39 @@
+﻿@model CarRentalWebApp.Models.Carrental
+
+@{
+    ViewData["Title"] = "Car Rental Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h4>Car Rental</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Carrentalid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Carrentalid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Carrentalcompanyname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Carrentalcompanyname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Carrentalid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

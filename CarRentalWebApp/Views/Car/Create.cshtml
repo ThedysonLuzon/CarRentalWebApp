@@ -1,0 +1,48 @@
+﻿@model CarRentalWebApp.Models.Car
+@{
+    ViewData["Title"] = "Create New Car";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <!-- CarId input field for testing -->
+    <div class="form-group">
+        <label asp-for="CarId" class="control-label">Car ID</label>
+        <input asp-for="CarId" class="form-control" />
+        <span asp-validation-for="CarId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CarModel" class="control-label">Car Model</label>
+        <input asp-for="CarModel" class="form-control" />
+        <span asp-validation-for="CarModel" class="text-danger"></span>
+    </div>
+
+    <!-- Add form fields for each property of the Car class -->
+    <div class="form-group">
+        <label asp-for="FuelType" class="control-label">Fuel Type</label>
+        <input asp-for="FuelType" class="form-control" />
+        <span asp-validation-for="FuelType" class="text-danger"></span>
+    </div>
+
+    <!-- ... other fields ... -->
+
+    <div class="form-group">
+        <label asp-for="RentalPricePerDay" class="control-label">Rental Price Per Day</label>
+        <input asp-for="RentalPricePerDay" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="RentalPricePerDay" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

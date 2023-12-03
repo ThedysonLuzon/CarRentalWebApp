@@ -1,0 +1,33 @@
+﻿@model CarRentalWebApp.Models.Car
+
+@{
+    ViewData["Title"] = "Edit Car";
+}
+
+<h2>Edit Car</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="CarId" />
+
+    <div class="form-group">
+        <label asp-for="CarModel" class="control-label"></label>
+        <input asp-for="CarModel" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FuelType" class="control-label"></label>
+        <input asp-for="FuelType" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Mileage" class="control-label"></label>
+        <input asp-for="Mileage" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RentalPricePerDay" class="control-label"></label>
+        <input asp-for="RentalPricePerDay" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

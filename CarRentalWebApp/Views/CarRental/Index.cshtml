@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CarRentalWebApp.Models.Carrental>
+
+@{
+    ViewData["Title"] = "Car Rentals";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Car Rental ID</th>
+            <th>Company Name</th>
+            <th>Location</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var carRental in Model)
+        {
+            <tr>
+                <td>@carRental.Carrentalid</td>
+                <td>@carRental.Carrentalcompanyname</td>
+                <td>@carRental.Location</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@carRental.Carrentalid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@carRental.Carrentalid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@carRental.Carrentalid">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create">Create New Car Rental</a>
