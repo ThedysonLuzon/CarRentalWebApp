@@ -8,9 +8,9 @@
             Cars = new HashSet<Car>();
         }
 
-        public string Carrentalid { get; set; } = null!;
-        public string? Carrentalcompanyname { get; set; }
-        public string? Location { get; set; }
+        public string carrentalid { get; set; } = null!;
+        public string? carrentalcompanyname { get; set; }
+        public string? location { get; set; }
 
         public virtual ICollection<Booking> Bookings { get; set; }
         public virtual ICollection<Car> Cars { get; set; }

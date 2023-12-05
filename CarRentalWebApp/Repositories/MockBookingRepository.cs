@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CarRentalWebApp.MockRepositories
 {
-    public class MockBookingRepository : IBookingRepository
+   /* public class MockBookingRepository : IBookingRepository
     {
         private readonly List<Booking> _bookingList;
 
@@ -76,5 +76,5 @@ namespace CarRentalWebApp.MockRepositories
             }
             return Task.CompletedTask;
         }
-    }
+    }*/
 }

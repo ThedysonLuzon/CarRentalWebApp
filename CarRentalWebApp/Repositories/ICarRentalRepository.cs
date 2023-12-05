@@ -7,7 +7,7 @@ namespace CarRentalWebApp.Repositories
         Task<IEnumerable<Carrental>> GetAllAsync();
         Task<Carrental?> GetByIdAsync(string carRentalId);
         Task AddAsync(Carrental carRental);
-        Task UpdateAsync(Carrental carRental);
+        Task UpdateAsync(Carrental carRental,string id);
         Task DeleteAsync(string carRentalId);
     }
 }

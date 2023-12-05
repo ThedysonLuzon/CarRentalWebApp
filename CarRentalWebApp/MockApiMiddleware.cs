@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.JsonPatch;
 
 public class MockApiMiddleware
 {
-    private readonly RequestDelegate _next;
-    private readonly MockCarRepository _mockCarRepository;
+   /* private readonly RequestDelegate _next;
+   // private readonly MockCarRepository _mockCarRepository;
     private readonly MockBookingRepository _mockBookingRepository;
     private readonly MockCarRentalRepository _mockCarRentalRepository; 
 
     public MockApiMiddleware(RequestDelegate next)
     {
         _next = next;
-        _mockCarRepository = new MockCarRepository();
+     //   _mockCarRepository = new MockCarRepository();
         _mockBookingRepository = new MockBookingRepository();
         _mockCarRentalRepository = new MockCarRentalRepository();
     }
@@ -118,12 +118,12 @@ public class MockApiMiddleware
         var id = context.Request.Query["id"].FirstOrDefault();
         if (string.IsNullOrEmpty(id))
         {
-            var cars = await _mockCarRepository.GetAllAsync();
+           // var cars = await _mockCarRepository.GetAllAsync();
             await RespondWithJson(context, cars);
         }
         else
         {
-            var car = await _mockCarRepository.GetByIdAsync(id);
+           // var car = await _mockCarRepository.GetByIdAsync(id);
             if (car != null)
             {
                 await RespondWithJson(context, car);
@@ -139,7 +139,7 @@ public class MockApiMiddleware
         var id = context.Request.Query["id"].FirstOrDefault();
         if (!string.IsNullOrEmpty(id))
         {
-            await _mockCarRepository.DeleteAsync(id);
+          //  await _mockCarRepository.DeleteAsync(id);
             context.Response.StatusCode = StatusCodes.Status204NoContent;
         }
         else
@@ -167,7 +167,7 @@ public class MockApiMiddleware
                 return;
             }
 
-            await _mockCarRepository.UpdateAsync(id, updatedCar);
+            //await _mockCarRepository.UpdateAsync(id, updatedCar);
             context.Response.StatusCode = StatusCodes.Status204NoContent;
         }
         catch (JsonException)
@@ -192,7 +192,7 @@ public class MockApiMiddleware
                 return;
             }
 
-            await _mockCarRepository.AddAsync(newCar);
+          //  await _mockCarRepository.AddAsync(newCar);
             context.Response.StatusCode = StatusCodes.Status201Created;
         }
         catch (JsonException)
@@ -211,7 +211,7 @@ public class MockApiMiddleware
 
         try
         {
-            var carToUpdate = await _mockCarRepository.GetByIdAsync(id);
+           // var carToUpdate = await _mockCarRepository.GetByIdAsync(id);
             if (carToUpdate == null)
             {
                 context.Response.StatusCode = StatusCodes.Status404NotFound;
@@ -231,7 +231,7 @@ public class MockApiMiddleware
             // Example: carToUpdate.CarModel = carUpdates.CarModel ?? carToUpdate.CarModel;
             // Repeat for other properties as necessary
 
-            await _mockCarRepository.UpdateAsync(id, carToUpdate);
+           // await _mockCarRepository.UpdateAsync(id, carToUpdate);
             context.Response.StatusCode = StatusCodes.Status204NoContent;
         }
         catch (JsonException)
@@ -468,6 +468,6 @@ public class MockApiMiddleware
         context.Response.StatusCode = StatusCodes.Status200OK;
         var jsonResponse = JsonSerializer.Serialize(data);
         await context.Response.WriteAsync(jsonResponse);
-    }
+    }*/
 
 }

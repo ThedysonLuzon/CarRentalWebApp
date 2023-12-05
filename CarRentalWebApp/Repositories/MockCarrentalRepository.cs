@@ -2,7 +2,7 @@
 
 namespace CarRentalWebApp.Repositories
 {
-    public class MockCarRentalRepository : ICarRentalRepository
+   /* public class MockCarRentalRepository : ICarRentalRepository
     {
         private List<Carrental> _carRentals = new List<Carrental>();
 
@@ -78,7 +78,7 @@ namespace CarRentalWebApp.Repositories
             }
             return Task.CompletedTask;
         }
-    }
+    }*/
 
 
 }

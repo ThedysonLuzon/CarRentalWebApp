@@ -1,4 +1,3 @@
-using CarRentalWebApp.MockRepositories;
 using CarRentalWebApp.Repositories;
 
 namespace CarRentalWebApp
@@ -11,31 +10,20 @@ namespace CarRentalWebApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
-            // Conditionally add HttpClient for ICarRepository or use MockCarRepository
-            if (builder.Environment.IsDevelopment())
+            builder.Services.AddHttpClient<ICarRepository, CarRepository>(client =>
             {
-                // Use mock repository in development
-                builder.Services.AddScoped<ICarRepository, MockCarRepository>();
-                builder.Services.AddScoped<IBookingRepository, MockBookingRepository>();
-                builder.Services.AddScoped<ICarRentalRepository, MockCarRentalRepository>();
-
-            }
-            else
+                client.BaseAddress = new Uri("http://3.97.115.6/api/");
+            });
+            builder.Services.AddHttpClient<IBookingRepository, BookingRepository>(client =>
             {
-                builder.Services.AddHttpClient<ICarRepository, CarRepository>(client =>
-                {
-                    client.BaseAddress = new Uri("https://your-car-rental-api/"); // Replace with actual API base URL
-                });
-                builder.Services.AddHttpClient<IBookingRepository, BookingRepository>(client =>
-                {
-                    client.BaseAddress = new Uri("https://your-booking-api/"); // Replace with actual API base URL 
-                });
-                builder.Services.AddHttpClient<ICarRentalRepository, CarRentalRepository>(client =>
-                {
-                    client.BaseAddress = new Uri("https://your-booking-api/"); // Replace with actual API base URL
-                });
-            }
+                client.BaseAddress = new Uri("http://3.97.115.6/api/"); 
+            });
+            builder.Services.AddHttpClient<ICarRentalRepository, CarRentalRepository>(client =>
+            {
+                client.BaseAddress = new Uri("http://3.97.115.6/api/");
+            });
+
+
 
             var app = builder.Build();
 
@@ -49,20 +37,14 @@ namespace CarRentalWebApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseRouting();
 
-            // Use MockApiMiddleware in development environment
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseMiddleware<MockApiMiddleware>();
-            }
+            app.UseRouting();
 
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-
 
             app.Run();
         }

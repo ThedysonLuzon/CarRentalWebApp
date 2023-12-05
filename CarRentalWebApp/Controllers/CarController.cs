@@ -6,43 +6,57 @@ namespace CarRentalWebApp.Controllers
 {
     public class CarController : Controller
     {
-
-        readonly ICarRepository _carRepository;
+        private readonly ICarRepository _carRepository;
 
         public CarController(ICarRepository carRepository)
         {
             _carRepository = carRepository;
         }
 
-        // Action for getting all cars
+        // GET: Car
         public async Task<IActionResult> Index()
         {
-            return View(await _carRepository.GetAllAsync());
+            var cars = await _carRepository.GetAllAsync();
+            return View(cars);
         }
 
-        // Action for getting a car by ID
-        public async Task<IActionResult> GetCarById(string id)
-        {
-            var car = await _carRepository.GetByIdAsync(id);
-            return View("Index", new List<Car> { car });
-        }
-
-        // Action method for deleting a car
-        [HttpGet]
-        public async Task<IActionResult> Delete(string id)
+        // GET: Car/Details/5
+        public async Task<IActionResult> Details(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
                 return NotFound();
             }
 
-            await _carRepository.DeleteAsync(id);
-
-            TempData["SuccessMessage"] = "Car has been successfully deleted.";
-
-            return RedirectToAction("Index");
+            var car = await _carRepository.GetByIdAsync(id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+            return View(car);
         }
 
+        // GET: Car/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Car/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("carid, carrentalid, carmodel, insuranceamount, fueltype, mileage, noofdoors, rentalpriceperday, luggagespace, geartype, freecancelation, caravailability")] Car car)
+        {
+            if (ModelState.IsValid)
+            {
+                await _carRepository.AddAsync(car);
+                TempData["SuccessMessage"] = "Car created successfully.";
+                return RedirectToAction(nameof(Index));
+            }
+            return View(car);
+        }
+
+        // GET: Car/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -55,48 +69,52 @@ namespace CarRentalWebApp.Controllers
             {
                 return NotFound();
             }
-            
             return View(car);
         }
 
-        // Implement the POST version of Edit to handle form submission
+        // POST: Car/Edit/5
         [HttpPost]
-        public async Task<IActionResult> Edit(string id, Car car)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, [Bind("carid, carrentalid, carmodel, insuranceamount, fueltype, mileage, noofdoors, rentalpriceperday, luggagespace, geartype, freecancelation, caravailability")] Car car)
         {
-            if (id != car.CarId)
+            if (id != car.carid)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            await _carRepository.UpdateAsync(id, car);
-            
-            TempData["SuccessMessage"] = "Car has been successfully updated.";
-
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                await _carRepository.UpdateAsync(id, car);
+                TempData["SuccessMessage"] = "Car edited successfully.";
+                return RedirectToAction(nameof(Index));
+            }
+            return View(car);
         }
 
-        // GET action for creating a new car
-        [HttpGet]
-        public IActionResult Create()
+        // GET: Car/Delete/5
+        public async Task<IActionResult> Delete(string id)
         {
-            return View();
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
+            var car = await _carRepository.GetByIdAsync(id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+            return View(car);
         }
 
-        // POST action for creating a new car
-        [HttpPost]
-        public async Task<IActionResult> Create(Car car)
+        // POST: Car/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            try
-            {
-                await _carRepository.AddAsync(car);
-                TempData["SuccessMessage"] = "New car has been successfully added.";
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            await _carRepository.DeleteAsync(id);
+            TempData["SuccessMessage"] = "Car deleted successfully.";
+            return RedirectToAction(nameof(Index));
         }
     }
 }
-

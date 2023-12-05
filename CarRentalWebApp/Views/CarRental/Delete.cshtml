@@ -10,30 +10,30 @@
 <div>
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Carrentalid)
+            @Html.DisplayNameFor(model => model.carrentalid)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Carrentalid)
+            @Html.DisplayFor(model => model.carrentalid)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Carrentalcompanyname)
+            @Html.DisplayNameFor(model => model.carrentalcompanyname)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Carrentalcompanyname)
+            @Html.DisplayFor(model => model.carrentalcompanyname)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Location)
+            @Html.DisplayNameFor(model => model.location)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Location)
+            @Html.DisplayFor(model => model.location)
         </dd>
     </dl>
 </div>
 
 <form asp-action="Delete" method="post">
-    <input type="hidden" asp-for="Carrentalid" />
+    <input type="hidden" asp-for="carrentalid" />
     <input type="submit" value="Delete" class="btn btn-danger" /> |
     <a asp-action="Index">Cancel</a>
 </form>

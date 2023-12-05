@@ -1,4 +1,5 @@
 ﻿@model CarRentalWebApp.Models.Car
+
 @{
     ViewData["Title"] = "Create New Car";
 }
@@ -8,38 +9,102 @@
 <form asp-action="Create" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <!-- CarId input field for testing -->
+    <!-- Car ID field -->
     <div class="form-group">
-        <label asp-for="CarId" class="control-label">Car ID</label>
-        <input asp-for="CarId" class="form-control" />
-        <span asp-validation-for="CarId" class="text-danger"></span>
+        <label asp-for="carid" class="control-label">Car ID</label>
+        <input asp-for="carid" class="form-control" />
+        <span asp-validation-for="carid" class="text-danger"></span>
     </div>
 
+    <!-- Car Rental ID field -->
     <div class="form-group">
-        <label asp-for="CarModel" class="control-label">Car Model</label>
-        <input asp-for="CarModel" class="form-control" />
-        <span asp-validation-for="CarModel" class="text-danger"></span>
+        <label asp-for="carrentalid" class="control-label">Car Rental ID</label>
+        <input asp-for="carrentalid" class="form-control" />
+        <span asp-validation-for="carrentalid" class="text-danger"></span>
     </div>
 
-    <!-- Add form fields for each property of the Car class -->
+    <!-- Car Model field -->
     <div class="form-group">
-        <label asp-for="FuelType" class="control-label">Fuel Type</label>
-        <input asp-for="FuelType" class="form-control" />
-        <span asp-validation-for="FuelType" class="text-danger"></span>
+        <label asp-for="carmodel" class="control-label">Car Model</label>
+        <input asp-for="carmodel" class="form-control" />
+        <span asp-validation-for="carmodel" class="text-danger"></span>
     </div>
 
-    <!-- ... other fields ... -->
-
+    <!-- Insurance Amount field -->
     <div class="form-group">
-        <label asp-for="RentalPricePerDay" class="control-label">Rental Price Per Day</label>
-        <input asp-for="RentalPricePerDay" class="form-control" type="number" step="0.01" />
-        <span asp-validation-for="RentalPricePerDay" class="text-danger"></span>
+        <label asp-for="insuranceamount" class="control-label">Insurance Amount</label>
+        <input asp-for="insuranceamount" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="insuranceamount" class="text-danger"></span>
+    </div>
+
+    <!-- Fuel Type field -->
+    <div class="form-group">
+        <label asp-for="fueltype" class="control-label">Fuel Type</label>
+        <input asp-for="fueltype" class="form-control" />
+        <span asp-validation-for="fueltype" class="text-danger"></span>
+    </div>
+
+    <!-- Mileage field -->
+    <div class="form-group">
+        <label asp-for="mileage" class="control-label">Mileage</label>
+        <input asp-for="mileage" class="form-control" />
+        <span asp-validation-for="mileage" class="text-danger"></span>
+    </div>
+
+    <!-- Number of Doors field -->
+    <div class="form-group">
+        <label asp-for="noofdoors" class="control-label">Number of Doors</label>
+        <input asp-for="noofdoors" class="form-control" type="number" />
+        <span asp-validation-for="noofdoors" class="text-danger"></span>
+    </div>
+
+    <!-- Rental Price Per Day field -->
+    <div class="form-group">
+        <label asp-for="rentalpriceperday" class="control-label">Rental Price Per Day</label>
+        <input asp-for="rentalpriceperday" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="rentalpriceperday" class="text-danger"></span>
+    </div>
+
+    <!-- Luggage Space field -->
+    <div class="form-group">
+        <label asp-for="luggagespace" class="control-label">Luggage Space</label>
+        <input asp-for="luggagespace" class="form-control" />
+        <span asp-validation-for="luggagespace" class="text-danger"></span>
+    </div>
+
+    <!-- Gear Type field -->
+    <div class="form-group">
+        <label asp-for="geartype" class="control-label">Gear Type</label>
+        <input asp-for="geartype" class="form-control" />
+        <span asp-validation-for="geartype" class="text-danger"></span>
+    </div>
+
+    <!-- Free Cancellation field -->
+    <div class="form-group">
+        <label asp-for="freecancelation" class="control-label">Free Cancellation</label>
+        <select asp-for="freecancelation" class="form-control">
+            <option value="">Select...</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <span asp-validation-for="freecancelation" class="text-danger"></span>
+    </div>
+
+    <!-- Car Availability field -->
+    <div class="form-group">
+        <label asp-for="caravailability" class="control-label">Car Availability</label>
+        <input asp-for="caravailability" class="form-control" />
+        <span asp-validation-for="caravailability" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary" />
     </div>
 </form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
 @section Scripts {
     @{

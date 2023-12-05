@@ -26,13 +26,13 @@
         @foreach (var carRental in Model)
         {
             <tr>
-                <td>@carRental.Carrentalid</td>
-                <td>@carRental.Carrentalcompanyname</td>
-                <td>@carRental.Location</td>
+                <td>@carRental.carrentalid</td>
+                <td>@carRental.carrentalcompanyname</td>
+                <td>@carRental.location</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@carRental.Carrentalid">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@carRental.Carrentalid">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@carRental.Carrentalid">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@carRental.carrentalid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@carRental.carrentalid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@carRental.carrentalid">Delete</a>
                 </td>
             </tr>
         }

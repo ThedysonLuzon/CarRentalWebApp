@@ -12,17 +12,17 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Bookingid)
+            @Html.DisplayNameFor(model => model.bookingid)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Bookingid)
+            @Html.DisplayFor(model => model.bookingid)
         </dd>
 
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Customername)
+            @Html.DisplayNameFor(model => model.customername)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Customername)
+            @Html.DisplayFor(model => model.customername)
         </dd>
 
         <!-- Include other important details of the booking you want to display -->
@@ -30,7 +30,7 @@
     </dl>
 
     <form asp-action="Delete" method="post">
-        <input type="hidden" asp-for="Bookingid" />
+        <input type="hidden" asp-for="bookingid" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Cancel</a>
     </form>

@@ -9,40 +9,40 @@
 <form asp-action="Edit" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <input type="hidden" asp-for="Bookingid" />
+    <input type="hidden" asp-for="bookingid" />
 
     <div class="form-group">
-        <label asp-for="Customername" class="control-label">Customer Name</label>
-        <input asp-for="Customername" class="form-control" />
-        <span asp-validation-for="Customername" class="text-danger"></span>
+        <label asp-for="customername" class="control-label">Customer Name</label>
+        <input asp-for="customername" class="form-control" />
+        <span asp-validation-for="customername" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Numberofpeople" class="control-label">Number of People</label>
-        <input asp-for="Numberofpeople" class="form-control" />
-        <span asp-validation-for="Numberofpeople" class="text-danger"></span>
+        <label asp-for="numberofpeople" class="control-label">Number of People</label>
+        <input asp-for="numberofpeople" class="form-control" />
+        <span asp-validation-for="numberofpeople" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Luggagespace" class="control-label">Luggage Space</label>
-        <input asp-for="Luggagespace" class="form-control" />
-        <span asp-validation-for="Luggagespace" class="text-danger"></span>
+        <label asp-for="luggagespace" class="control-label">Luggage Space</label>
+        <input asp-for="luggagespace" class="form-control" />
+        <span asp-validation-for="luggagespace" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="InsuranceNeeded" class="control-label">Insurance Needed</label>
-        <select asp-for="InsuranceNeeded" class="form-control">
+        <label asp-for="insuranceneeded" class="control-label">Insurance Needed</label>
+        <select asp-for="insuranceneeded" class="form-control">
             <option value="">Please select</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
-        <span asp-validation-for="InsuranceNeeded" class="text-danger"></span>
+        <span asp-validation-for="insuranceneeded" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Bookingdate" class="control-label">Booking Date</label>
-        <input asp-for="Bookingdate" class="form-control" type="date" />
-        <span asp-validation-for="Bookingdate" class="text-danger"></span>
+        <label asp-for="bookingdate" class="control-label">Booking Date</label>
+        <input asp-for="bookingdate" class="form-control" type="date" />
+        <span asp-validation-for="bookingdate" class="text-danger"></span>
     </div>
 
     <!-- Include other fields as necessary -->

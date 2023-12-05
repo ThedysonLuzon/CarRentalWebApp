@@ -2,7 +2,7 @@
 using CarRentalWebApp.Models;
 using CarRentalWebApp.Repositories;
 
-public class MockCarRepository : ICarRepository
+/*public class MockCarRepository : ICarRepository
 {
     private readonly ConcurrentDictionary<string, Car> _cars = new ConcurrentDictionary<string, Car>();
 
@@ -55,4 +55,4 @@ public class MockCarRepository : ICarRepository
         _cars.TryRemove(id, out var removedCar);
         return Task.CompletedTask;
     }
-}
+}*/

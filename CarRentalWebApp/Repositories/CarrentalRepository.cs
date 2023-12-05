@@ -1,63 +1,61 @@
 ﻿using CarRentalWebApp.Models;
+using System.Text.Json;
+
 
 namespace CarRentalWebApp.Repositories
 {
     public class CarRentalRepository : ICarRentalRepository
     {
-        // Assuming you're using an in-memory list for mock purposes
-        private readonly List<Carrental> _carRentals = new();
+        private readonly HttpClient _httpClient;
+        private readonly string _baseUrl = "http://3.97.115.6/api/"; 
 
-        public CarRentalRepository()
+        public CarRentalRepository(HttpClient httpClient)
         {
-            // Optionally initialize with some data
+            _httpClient = httpClient;
         }
 
-        public Task<IEnumerable<Carrental>> GetAllAsync()
+        public async Task<IEnumerable<Carrental>> GetAllAsync()
         {
             // Example implementation for GetAllAsync
-            return Task.FromResult<IEnumerable<Carrental>>(_carRentals);
+            var response = await _httpClient.GetAsync(_baseUrl + "carrentals");
+            response.EnsureSuccessStatusCode();
+            // return Task.FromResult<IEnumerable<Carrental>>(_carRentals);
+            using var responseStream = await response.Content.ReadAsStreamAsync();
+            var carrentals = await JsonSerializer.DeserializeAsync<IEnumerable<Carrental>>(responseStream);
+            return carrentals;
         }
 
-        public Task<Carrental> GetByIdAsync(string carRentalId)
+        public async Task<Carrental> GetByIdAsync(string carRentalId)
         {
             // Example implementation for GetByIdAsync
-            var carRental = _carRentals.FirstOrDefault(cr => cr.Carrentalid == carRentalId);
-            return Task.FromResult(carRental);
+            var response = await _httpClient.GetAsync(_baseUrl + $"carrental/{carRentalId}");
+            response.EnsureSuccessStatusCode();
+
+            using var responseStream = await response.Content.ReadAsStreamAsync();
+            return await JsonSerializer.DeserializeAsync<Carrental>(responseStream);
         }
 
-        public Task AddAsync(Carrental carRental)
+        public async Task AddAsync(Carrental carRental)
         {
             // Example implementation for AddAsync
-            _carRentals.Add(carRental);
-            return Task.CompletedTask;
+            var content = new StringContent(JsonSerializer.Serialize(carRental), System.Text.Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync(_baseUrl + "Carrental", content);
+            response.EnsureSuccessStatusCode();
         }
 
-        public async Task UpdateAsync(Carrental carRental)
+        public async Task UpdateAsync(Carrental carRental,string id)
         {
             // Find the existing car rental in the list
-            var existingCarRental = _carRentals.FirstOrDefault(cr => cr.Carrentalid == carRental.Carrentalid);
-            if (existingCarRental != null)
-            {
-                // Update properties here
-                existingCarRental.Carrentalcompanyname = carRental.Carrentalcompanyname;
-                existingCarRental.Location = carRental.Location;
-                // Update other properties as necessary
-            }
-            else
-            {
-                // Handle the case where the car rental doesn't exist, e.g., throw an exception or do nothing
-            }
+            var content = new StringContent(JsonSerializer.Serialize(carRental), System.Text.Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync(_baseUrl + $"Carrental/{id}", content);
+            response.EnsureSuccessStatusCode();
         }
 
-        public Task DeleteAsync(string carRentalId)
+        public async Task DeleteAsync(string carRentalId)
         {
             // Example implementation for DeleteAsync
-            var carRental = _carRentals.FirstOrDefault(cr => cr.Carrentalid == carRentalId);
-            if (carRental != null)
-            {
-                _carRentals.Remove(carRental);
-            }
-            return Task.CompletedTask;
+            var response = await _httpClient.DeleteAsync(_baseUrl + $"Carrental/{carRentalId}");
+            response.EnsureSuccessStatusCode();
         }
     }
 

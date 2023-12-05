@@ -76,16 +76,16 @@ namespace CarRentalWebApp.Controllers
         // POST: CarRental/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Carrentalid,Carrentalcompanyname,Location")] Carrental carRental)
+        public async Task<IActionResult> Edit(string id, [Bind("carrentalid,carrentalcompanyname,location")] Carrental carRental)
         {
-            if (id != carRental.Carrentalid)
+            if (id != carRental.carrentalid)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                await _carRentalRepository.UpdateAsync(carRental);
+                await _carRentalRepository.UpdateAsync(carRental, id);
                 TempData["SuccessMessage"] = "Car rental edited successfully.";
                 return RedirectToAction(nameof(Index));
             }

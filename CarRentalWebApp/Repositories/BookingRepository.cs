@@ -1,41 +1,58 @@
 ﻿using CarRentalWebApp.Models;
+using System.Text.Json;
+
 
 namespace CarRentalWebApp.Repositories
 {
     public class BookingRepository : IBookingRepository
     {
-        // private readonly YourDbContext _context;
+        private readonly HttpClient _httpClient;
+        private readonly string _baseUrl = "http://3.97.115.6/api/";
 
-        public BookingRepository(/* YourDbContext context */)
+        public BookingRepository(HttpClient httpClient)
         {
-            // _context = context;
+             _httpClient = httpClient;
         }
 
         public async Task<IEnumerable<Booking>> GetAllAsync()
         {
             // Return all bookings. Replace with actual DB code.
-            return new List<Booking>();
+            var response = await _httpClient.GetAsync(_baseUrl + "bookings");
+            response.EnsureSuccessStatusCode();
+
+            using var responseStream = await response.Content.ReadAsStreamAsync();
+            var bookings = await JsonSerializer.DeserializeAsync<IEnumerable<Booking>>(responseStream);
+            return bookings;
         }
 
         public async Task<Booking> GetByIdAsync(int bookingId)
         {
             // Get a booking by ID. Replace with actual DB code.
-            return new Booking();
+            var response = await _httpClient.GetAsync(_baseUrl + $"Booking/{bookingId}");
+            response.EnsureSuccessStatusCode();
+
+            using var responseStream = await response.Content.ReadAsStreamAsync();
+            return await JsonSerializer.DeserializeAsync<Booking>(responseStream);
         }
 
         public async Task AddAsync(Booking booking)
         {
-            // Add a new booking. Replace with actual DB code.
+            var content = new StringContent(JsonSerializer.Serialize(booking), System.Text.Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync(_baseUrl + "Booking", content);
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task UpdateAsync(int bookingId, Booking booking)
         {
-            // Update a booking. Replace with actual DB code.
+            var content = new StringContent(JsonSerializer.Serialize(booking), System.Text.Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync(_baseUrl + $"Booking/{bookingId}", content);
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task DeleteAsync(int bookingId)
         {
-            // Delete a booking. Replace with actual DB code.
+            var response = await _httpClient.DeleteAsync(_baseUrl + $"Booking/{bookingId}");
+            response.EnsureSuccessStatusCode();
         }
     }
 }

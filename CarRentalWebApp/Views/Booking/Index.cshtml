@@ -29,15 +29,15 @@
         @foreach (var booking in Model)
         {
             <tr>
-                <td>@booking.Bookingid</td>
-                <td>@booking.Customername</td>
-                <td>@booking.Numberofpeople</td>
-                <td>@booking.Luggagespace</td>
-                <td>@booking.InsuranceNeeded</td>
+                <td>@booking.bookingid</td>
+                <td>@booking.customername</td>
+                <td>@booking.numberofpeople</td>
+                <td>@booking.luggagespace</td>
+                <td>@booking.insuranceneeded</td>
                 <td>
-                    @if (booking.Bookingdate.HasValue)
+                    @if (booking.bookingdate.HasValue)
                     {
-                        @booking.Bookingdate.Value.ToShortDateString()
+                        @booking.bookingdate.Value.ToShortDateString()
                     }
                     else
                     {
@@ -45,9 +45,9 @@
                     }
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@booking.Bookingid">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@booking.Bookingid">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@booking.Bookingid">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@booking.bookingid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@booking.bookingid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@booking.bookingid">Delete</a>
                 </td>
             </tr>
         }

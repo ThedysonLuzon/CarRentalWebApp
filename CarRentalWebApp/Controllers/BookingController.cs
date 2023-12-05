@@ -68,7 +68,7 @@ namespace CarRentalWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Bookingid,Carid,Carrentalcompanyid,Customername,Numberofpeople,Luggagespace,InsuranceNeeded,Bookingdate")] Booking booking)
         {
-            if (id != booking.Bookingid)
+            if (id != booking.bookingid)
             {
                 return NotFound();
             }

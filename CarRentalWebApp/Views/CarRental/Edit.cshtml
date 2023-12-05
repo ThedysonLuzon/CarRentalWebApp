@@ -7,19 +7,19 @@
 <h2>@ViewData["Title"]</h2>
 
 <form asp-action="Edit">
-    <input type="hidden" asp-for="Carrentalid" />
+    <input type="hidden" asp-for="carrentalid" />
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="form-group">
-        <label asp-for="Carrentalcompanyname" class="control-label"></label>
-        <input asp-for="Carrentalcompanyname" class="form-control" />
-        <span asp-validation-for="Carrentalcompanyname" class="text-danger"></span>
+        <label asp-for="carrentalcompanyname" class="control-label"></label>
+        <input asp-for="carrentalcompanyname" class="form-control" />
+        <span asp-validation-for="carrentalcompanyname" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Location" class="control-label"></label>
-        <input asp-for="Location" class="form-control" />
-        <span asp-validation-for="Location" class="text-danger"></span>
+        <label asp-for="location" class="control-label"></label>
+        <input asp-for="location" class="form-control" />
+        <span asp-validation-for="location" class="text-danger"></span>
     </div>
 
     <div class="form-group">

@@ -2,16 +2,16 @@
 {
     public partial class Booking
     {
-        public int Bookingid { get; set; }
-        public string? Carid { get; set; }
-        public string? Carrentalcompanyid { get; set; }
-        public string? Customername { get; set; }
-        public int? Numberofpeople { get; set; }
-        public int? Luggagespace { get; set; }
-        public bool? InsuranceNeeded { get; set; }
-        public DateTime? Bookingdate { get; set; }
+        public int bookingid { get; set; }
+        public string? carid { get; set; }
+        public string? carrentalcompanyid { get; set; }
+        public string? customername { get; set; }
+        public int? numberofpeople { get; set; }
+        public int? luggagespace { get; set; }
+        public bool? insuranceneeded { get; set; }
+        public DateTime? bookingdate { get; set; }
 
-        public virtual Car? Car { get; set; }
-        public virtual Carrental? Carrentalcompany { get; set; }
+        public virtual Car? car { get; set; }
+        public virtual Carrental? carrentalcompany { get; set; }
     }
 }
