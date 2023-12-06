@@ -8,7 +8,7 @@
         public string? customername { get; set; }
         public int? numberofpeople { get; set; }
         public int? luggagespace { get; set; }
-        public bool? insuranceneeded { get; set; }
+        public bool? insuranceNeeded { get; set; }
         public DateTime? bookingdate { get; set; }
 
         public virtual Car? car { get; set; }

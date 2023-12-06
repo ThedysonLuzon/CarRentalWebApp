@@ -28,7 +28,7 @@ namespace CarRentalWebApp.Repositories
         public async Task<Carrental> GetByIdAsync(string carRentalId)
         {
             // Example implementation for GetByIdAsync
-            var response = await _httpClient.GetAsync(_baseUrl + $"carrental/{carRentalId}");
+            var response = await _httpClient.GetAsync($"https://localhost:7077/api/" + $"carrental/{carRentalId}");
             response.EnsureSuccessStatusCode();
 
             using var responseStream = await response.Content.ReadAsStreamAsync();

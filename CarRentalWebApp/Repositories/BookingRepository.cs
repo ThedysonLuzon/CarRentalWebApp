@@ -28,7 +28,7 @@ namespace CarRentalWebApp.Repositories
         public async Task<Booking> GetByIdAsync(int bookingId)
         {
             // Get a booking by ID. Replace with actual DB code.
-            var response = await _httpClient.GetAsync(_baseUrl + $"Booking/{bookingId}");
+            var response = await _httpClient.GetAsync($"https://localhost:7077/api/" + $"Booking/{bookingId}");
             response.EnsureSuccessStatusCode();
 
             using var responseStream = await response.Content.ReadAsStreamAsync();

@@ -40,7 +40,7 @@ namespace CarRentalWebApp.Controllers
         // POST: Booking/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Bookingid,Carid,Carrentalcompanyid,Customername,Numberofpeople,Luggagespace,InsuranceNeeded,Bookingdate")] Booking booking)
+        public async Task<IActionResult> Create([Bind("bookingid,carid,carrentalcompanyid,customername,numberofpeople,luggagespace,insuranceNeeded,bookingdate")] Booking booking)
         {
             if (ModelState.IsValid)
             {

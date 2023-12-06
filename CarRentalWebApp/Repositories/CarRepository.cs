@@ -47,7 +47,7 @@ namespace CarRentalWebApp.Repositories
 
         public async Task<Car> GetByIdAsync(string id)
         {
-            var response = await _httpClient.GetAsync(_baseUrl + $"Car/{id}");
+            var response = await _httpClient.GetAsync($"https://localhost:7077/api/" + $"Car/{id}");
             response.EnsureSuccessStatusCode();
 
             using var responseStream = await response.Content.ReadAsStreamAsync();
@@ -63,7 +63,7 @@ namespace CarRentalWebApp.Repositories
 
         public async Task UpdateAsync(string id, Car car)
         {
-            var content = new StringContent(JsonSerializer.Serialize(car), System.Text.Encoding.UTF8, "application/json");
+            var content = new StringContent(JsonSerializer.Serialize(car), System.Text.Encoding.UTF8, "application/json-patch+json");
             var response = await _httpClient.PutAsync(_baseUrl + $"Car/{id}", content);
             response.EnsureSuccessStatusCode();
         }
