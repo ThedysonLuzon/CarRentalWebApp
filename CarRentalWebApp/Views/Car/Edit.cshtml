@@ -10,20 +10,26 @@
     <input type="hidden" asp-for="carid" />
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-    <!-- Car Model -->
     <div class="form-group">
+        <label asp-for="carrentalid" class="control-label">Car Rental Id</label>
+        <input asp-for="carrentalid" class="form-control"disabled="disabled" />
+            <input asp-for="carrentalid" type="hidden" />
+        <span asp-validation-for="carrentalid" class="text-danger"></span>
+    </div>
+     
+     <div class="form-group">
         <label asp-for="carmodel" class="control-label"></label>
         <input asp-for="carmodel" class="form-control" />
         <span asp-validation-for="carmodel" class="text-danger"></span>
     </div>
 
-    <!-- Insurance Amount -->
+     <!-- Insurance Amount field -->
     <div class="form-group">
         <label asp-for="insuranceamount" class="control-label"></label>
         <input asp-for="insuranceamount" class="form-control" type="number" step="0.01" />
         <span asp-validation-for="insuranceamount" class="text-danger"></span>
     </div>
+
 
     <!-- Include other fields in a similar manner -->
     <!-- Fuel Type -->
@@ -33,11 +39,58 @@
         <span asp-validation-for="fueltype" class="text-danger"></span>
     </div>
 
-    <!-- Mileage -->
+  <!-- Mileage field -->
     <div class="form-group">
         <label asp-for="mileage" class="control-label"></label>
         <input asp-for="mileage" class="form-control" />
         <span asp-validation-for="mileage" class="text-danger"></span>
+    </div>
+
+     <!-- Number of Doors field -->
+    <div class="form-group">
+        <label asp-for="noofdoors" class="control-label"></label>
+        <input asp-for="noofdoors" class="form-control" type="number" />
+        <span asp-validation-for="noofdoors" class="text-danger"></span>
+    </div>
+     <!-- Rental Price Per Day field -->
+    <div class="form-group">
+        <label asp-for="rentalpriceperday" class="control-label"></label>
+        <input asp-for="rentalpriceperday" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="rentalpriceperday" class="text-danger"></span>
+    </div>
+
+    <!-- Luggage Space field -->
+    <div class="form-group">
+        <label asp-for="luggagespace" class="control-label"></label>
+        <input asp-for="luggagespace" class="form-control" />
+        <span asp-validation-for="luggagespace" class="text-danger"></span>
+    </div>
+
+    <!-- Gear Type field -->
+    <div class="form-group">
+        <label asp-for="geartype" class="control-label"></label>
+        <input asp-for="geartype" class="form-control" />
+        <span asp-validation-for="geartype" class="text-danger"></span>
+    </div>
+       <!-- Free Cancellation field -->
+    <div class="form-group">
+        <label asp-for="freecancelation" class="control-label"></label>
+        <select asp-for="freecancelation" class="form-control">
+            <option value="">Select...</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <span asp-validation-for="freecancelation" class="text-danger"></span>
+    </div>
+     <!-- Car Availability field -->
+    <div class="form-group">
+        <label asp-for="caravailability" class="control-label"></label>
+         <select asp-for="caravailability" class="form-control">
+            <option value="">Select...</option>
+            <option value="Available">Available</option>
+            <option value="NA">Not Available</option>
+        </select>
+        <span asp-validation-for="caravailability" class="text-danger"></span>
     </div>
 
     <!-- Add other fields here like noofdoors, rentalpriceperday, luggagespace, etc. -->
@@ -46,6 +99,8 @@
         <input type="submit" value="Save" class="btn btn-primary" />
         <a asp-action="Index" class="btn btn-secondary">Cancel</a>
     </div>
+    
+  
 </form>
 
 @section Scripts {

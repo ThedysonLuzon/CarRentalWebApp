@@ -12,7 +12,7 @@
     <!-- Car ID field -->
     <div class="form-group">
         <label asp-for="carid" class="control-label">Car ID</label>
-        <input asp-for="carid" class="form-control" />
+        <input asp-for="carid" class="form-control"/>
         <span asp-validation-for="carid" class="text-danger"></span>
     </div>
 
@@ -93,7 +93,11 @@
     <!-- Car Availability field -->
     <div class="form-group">
         <label asp-for="caravailability" class="control-label">Car Availability</label>
-        <input asp-for="caravailability" class="form-control" />
+         <select asp-for="caravailability" class="form-control">
+            <option value="">Select...</option>
+            <option value="Available">Available</option>
+            <option value="NA">Not Available</option>
+        </select>
         <span asp-validation-for="caravailability" class="text-danger"></span>
     </div>
 

@@ -9,6 +9,16 @@
 <form asp-action="Create" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+      <div class="form-group">
+        <label asp-for="carid" class="control-label">Car Id</label>
+        <input asp-for="carid" class="form-control" />
+        <span asp-validation-for="carid" class="text-danger"></span>
+    </div>
+      <div class="form-group">
+        <label asp-for="carrentalcompanyid" class="control-label">Car Rental Company Id</label>
+        <input asp-for="carrentalcompanyid" class="form-control" />
+        <span asp-validation-for="carrentalcompanyid" class="text-danger"></span>
+    </div>
     <div class="form-group">
         <label asp-for="customername" class="control-label">Customer Name</label>
         <input asp-for="customername" class="form-control" />
@@ -28,13 +38,13 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="insuranceneeded" class="control-label">Insurance Needed</label>
-        <select asp-for="insuranceneeded" class="form-control">
+        <label asp-for="insuranceNeeded" class="control-label">Insurance Needed</label>
+        <select asp-for="insuranceNeeded" class="form-control">
             <option value="">Please select</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
-        <span asp-validation-for="insuranceneeded" class="text-danger"></span>
+        <span asp-validation-for="insuranceNeeded" class="text-danger"></span>
     </div>
 
     <div class="form-group">
